@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Images</title>
+<style>
+body {
+background-color: #1d2a35 !important;
+color: #ddd !important;
+}
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #333;
+}
+li {
+float: left;
+}
+li a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+.active {
+background-color: darkgrey;
+}
+/* Additional styles for the gallery */
+.gallery {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+
+margin-top: 20px;
+}
+.gallery img {
+margin: 10px;
+width: calc(33.333% - 20px); /* 3 images per row with margins */
+height: auto;
+object-fit: cover;
+border-radius: 5px;
+}
+@media (max-width: 800px) {
+.gallery img {
+width: calc(50% - 20px); /* 2 images per row with margins */
+}
+}
+@media (max-width: 500px) {
+.gallery img {
+width: calc(100% - 20px); /* 1 image per row with margins */
+}
+}
+</style>
+</head>
+<body>
+<ul>
+<li><a href="index.html">Blog</a></li>
+<li><a href="tables.html">Tables</a></li>
+<li><a class="active" href="img.html">Images</a></li>
+<li style="float: right;"><a>About</a></li>
+</ul>
+<h1>Car Gallery</h1>
+<h2>Porsche 718</h2>
+<div class="gallery">
+<img src="https://shorturl.at/a9p6d" alt="Image 1">
+<img src="https://shorturl.at/XUVkQ" alt="Image 2">
+<img src="https://t.ly/UOaBU" alt="Image 3">
+</div>
+<h2>Porsche 911</h2>
+<div class="gallery">
+<img
+
+src="https://car-images.bauersecure.com/wp-images/153951/1056x594/gt3rs_020.jpg"
+alt="Image 1">
+
+<img src="https://shorturl.at/sQfiI" alt="Image 2">
+<img src="https://t.ly/zWR2y" alt="Image 3">
+</div>
+
+<h2>Porsche Tycan</h2>
+<div class="gallery">
+<img src="https://t.ly/Pqm1i" alt="Image 1">
+<img src="https://t.ly/g64Ug" alt="Image 2">
+<img src="https://t.ly/Unp4f" alt="Image 3">
+</div>
+<h2>Porsche Panamera</h2>
+<div class="gallery">
+<img src="https://t.ly/rmefa" alt="Image 1">
+<img src="https://t.ly/jW2ah" alt="Image 2">
+<img src="https://t.ly/tOmFP" alt="Image 3">
+</div>
+<h2>Porsche Macan</h2>
+<div class="gallery">
+<img src="https://t.ly/n5bkA" alt="Image 1">
+<img src="https://t.ly/kfAHn" alt="Image 2">
+<img src="https://t.ly/zu-RQ" alt="Image 3">
+</div>
+<h2>Porsche Cayenne</h2>
+<div class="gallery">
+<img src="https://t.ly/2IWhG" alt="Image 1">
+<img src="https://t.ly/IULFO" alt="Image 2">
+<img src="https://t.ly/EZ6vq" alt="Image 3">
+</div>
+</body>
+</html>
