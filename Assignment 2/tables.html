@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tables</title>
+<style>
+body {
+background-color: #1d2a35 !important;
+color: #ddd !important;
+font-family: Arial, sans-serif;
+}
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #333;
+}
+li {
+float: left;
+}
+li a {
+
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+.active {
+background-color: darkgrey;
+}
+table {
+width: 80%;
+margin: 20px auto;
+border-collapse: collapse;
+}
+th, td {
+padding: 12px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+th {
+background-color: #333;
+color: white;
+}
+tr:hover {background-color: #575757;}
+tr:nth-child(even) {background-color: #2c3e50;}
+/* Styles for the centered image */
+.centered-image {
+display: block;
+margin: 20px auto; /* Center horizontally and add margin */
+width: 70%; /* Set the width of the image */
+max-width: 80%; /* Optional: limit the maximum width */
+height: auto; /* Maintain aspect ratio */
+}
+</style>
+</head>
+<body>
+<ul>
+<li><a href="index.html">Blog</a></li>
+<li><a class="active" href="tables.html">Tables</a></li>
+<li><a href="img.html">Images</a></li>
+<li style="float: right;"><a>About</a></li>
+</ul>
+<h1 style="text-align: center;">Porsche Car Models</h1>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+
+<th>Type</th>
+<th>Horsepower</th>
+<th>Top Speed</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>718 Cayman GT4 RS</td>
+<td>Coupe</td>
+<td>493 hp</td>
+<td>315 km/h</td>
+<td>INR 27,443,000</td>
+</tr>
+<tr>
+<td>911 GT3 RS</td>
+<td>Coupe</td>
+<td>518 hp</td>
+<td>296 km/h</td>
+<td>INR 35,056,000</td>
+</tr>
+<tr>
+<td>Taycan Turbo S</td>
+<td>Sedan</td>
+<td>560 kW</td>
+<td>260 km/h</td>
+<td>INR 18,942,000</td>
+</tr>
+<tr>
+<td>Panamera</td>
+<td>Sedan</td>
+<td>455 hp</td>
+<td>280 km/h</td>
+<td>INR 23,369,000</td>
+</tr>
+<tr>
+<td>Macan GTS</td>
+<td>SUV</td>
+<td>434 hp</td>
+<td>272 km/h</td>
+<td>INR 15,247,000</td>
+</tr>
+<tr>
+<td>Cayenne GTS</td>
+<td>SUV</td>
+<td>349 hp</td>
+<td>275 km/h</td>
+<td>INR 20,132,000</td>
+
+</tr>
+</tbody>
+</table>
+<img src="https://t.ly/42ctX" alt="Porsche Image" class="centered-image">
+</body>
+</html>

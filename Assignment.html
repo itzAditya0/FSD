@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Registration Form</h1>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <div class="error" id="nameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" pattern="\d{10}" maxlength="10" >
+                <div class="error" id="phoneError"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <div class="error" id="emailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="state">State:</label>
+                <select id="state" name="state">
+                    <option value="">Select State</option>
+                    <option value="gujarat">Gujarat</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="tamil-nadu">Tamil Nadu</option>
+                </select>
+                <div class="error" id="stateError"></div>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <select id="city" name="city" disabled>
+                    <option value="">Select City</option>
+                </select>
+                <div class="error" id="cityError"></div>
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country">
+                <div class="error" id="countryError"></div>
+            </div>
+            <div class="form-group">
+                <label for="pincode">Pin Code:</label>
+                <input type="text" id="pincode" name="pincode" maxlength="6">
+                <div class="error" id="pincodeError"></div>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            let valid = true;
+
+            const name = document.getElementById('name').value;
+            if (name.trim() === '') {
+                document.getElementById('nameError').innerText = 'Name is required';
+                valid = false;
+            } else {
+                document.getElementById('nameError').innerText = '';
+            }
+
+            const phone = document.getElementById('phone').value;
+            if (phone.trim() === '' || !/^\d{10}$/.test(phone)) {
+                document.getElementById('phoneError').innerText = 'Phone number is required and should be 10 digits';
+                valid = false;
+            } else {
+                document.getElementById('phoneError').innerText = '';
+            }
+
+            const email = document.getElementById('email').value;
+            if (email.trim() === '' || !/\S+@\S+\.\S+/.test(email)) {
+                document.getElementById('emailError').innerText = 'Valid email is required';
+                valid = false;
+            } else {
+                document.getElementById('emailError').innerText = '';
+            }
+
+            const state = document.getElementById('state').value;
+            if (state === '') {
+                document.getElementById('stateError').innerText = 'State is required';
+                valid = false;
+            } else {
+                document.getElementById('stateError').innerText = '';
+            }
+
+            const city = document.getElementById('city').value;
+            if (city === '') {
+                document.getElementById('cityError').innerText = 'City is required';
+                valid = false;
+            } else {
+                document.getElementById('cityError').innerText = '';
+            }
+
+            const country = document.getElementById('country').value;
+            if (country.trim() === '') {
+                document.getElementById('countryError').innerText = 'Country is required';
+                valid = false;
+            } else {
+                document.getElementById('countryError').innerText = '';
+            }
+
+            const pincode = document.getElementById('pincode').value;
+            if (pincode.trim() === '' || !/^\d{6}$/.test(pincode)) {
+                document.getElementById('pincodeError').innerText = 'Pin code is required and should be 6 digits';
+                valid = false;
+            } else {
+                document.getElementById('pincodeError').innerText = '';
+            }
+
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+
+        const stateCityMap = {
+            "gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar"],
+            "maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Solapur"],
+            "tamil-nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli"]
+        };
+
+        const stateSelect = document.getElementById('state');
+        const citySelect = document.getElementById('city');
+
+        stateSelect.addEventListener('change', function() {
+            const selectedState = stateSelect.value;
+            citySelect.innerHTML = '<option value="">Select City</option>';
+
+            if (selectedState) {
+                const cities = stateCityMap[selectedState];
+                cities.forEach(function(city) {
+                    const option = document.createElement('option');
+                    option.value = city.toLowerCase();
+                    option.text = city;
+                    citySelect.appendChild(option);
+                });
+                citySelect.disabled = false;
+            } else {
+                citySelect.disabled = true;
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Solutions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Task Solutions</h1>
+
+    <button id="showTimeBtn">Show Current Time</button>
+    <div id="currentTime"></div>
+
+    <div>
+        <h2>Timer Clock</h2>
+        <button id="startTimerBtn">Start Timer</button>
+        <button id="stopTimerBtn">Stop Timer</button>
+        <button id="resetTimerBtn">Reset Timer</button>
+        <div id="timer">00:00:00</div>
+    </div>
+
+    <div>
+        <h2>Form with Validation</h2>
+        <form id="myForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <div class="error" id="nameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <div class="error" id="emailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="">Select</option>
+                    <option value="tech">Tech</option>
+                    <option value="non-tech">Non-Tech</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subcategory">Subcategory:</label>
+                <select id="subcategory" name="subcategory">
+                    <option value="">Select</option>
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to format time in 12-hour format
+        function formatTime(date) {
+            let hours = date.getHours();
+            const minutes = date.getMinutes();
+            const seconds = date.getSeconds();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            const strTime = hours.toString().padStart(2, '0') + ':' + 
+                            minutes.toString().padStart(2, '0') + ':' + 
+                            seconds.toString().padStart(2, '0') + ' ' + ampm;
+            return strTime;
+        }
+
+        // Show Current Time on Click
+        document.getElementById('showTimeBtn').addEventListener('click', function() {
+            const now = new Date();
+            const timeString = formatTime(now);
+            document.getElementById('currentTime').innerText = `Current Time: ${timeString}`;
+        });
+
+        // Timer Clock
+        let timerInterval;
+        let startTime;
+        document.getElementById('startTimerBtn').addEventListener('click', function() {
+            startTime = Date.now();
+            timerInterval = setInterval(function() {
+                const elapsedTime = Date.now() - startTime;
+                const hours = Math.floor(elapsedTime / (1000 * 60 * 60));
+                const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+                document.getElementById('timer').innerText = 
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        });
+
+        document.getElementById('stopTimerBtn').addEventListener('click', function() {
+            clearInterval(timerInterval);
+        });
+
+        document.getElementById('resetTimerBtn').addEventListener('click', function() {
+            clearInterval(timerInterval);
+            document.getElementById('timer').innerText = '00:00:00';
+        });
+
+        // Form Validation
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            let valid = true;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            // Reset errors
+            document.getElementById('nameError').innerText = '';
+            document.getElementById('emailError').innerText = '';
+
+            if (name.trim() === '') {
+                document.getElementById('nameError').innerText = 'Name is required';
+                valid = false;
+            }
+
+            if (email.trim() === '') {
+                document.getElementById('emailError').innerText = 'Email is required';
+                valid = false;
+            } else if (!/\S+@\S+\.\S+/.test(email)) {
+                document.getElementById('emailError').innerText = 'Email is invalid';
+                valid = false;
+            }
+
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+
+        // Conditional Dropdown
+        const category = document.getElementById('category');
+        const subcategory = document.getElementById('subcategory');
+
+        category.addEventListener('change', function() {
+            const selectedCategory = this.value;
+            let options = '<option value="">Select</option>';
+
+            if (selectedCategory === 'tech') {
+                options += '<option value="programming">Programming</option>';
+                options += '<option value="networking">Networking</option>';
+            } else if (selectedCategory === 'non-tech') {
+                options += '<option value="hr">HR</option>';
+                options += '<option value="finance">Finance</option>';
+            }
+
+            subcategory.innerHTML = options;
+        });
+    </script>
+
+</body>
+</html>

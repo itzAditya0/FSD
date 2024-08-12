@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Link</title>
+  <style>
+  	@font-face {
+      font-family: 'OCR A Std';
+      src: url('https://fonts.cdnfonts.com/s/19293/OCR-A.woff') format('woff');
+    }
+
+    body {
+      background-color: #EBE3D5;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    nav {
+      display: flex;
+      list-style: none;
+      padding: 0;
+    }
+
+    nav li {
+      margin-right: 20px;
+    }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .actions {
+      display: flex;
+    }
+
+    .title {
+      font-size: 69.9px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      font-family: apercu, sans-serif;;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      font-weight: normal;
+      margin-bottom: 40px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 670px;
+      max-height: 600px;
+      background-color: #776B5D;
+      color: #E3E1D9;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      margin: 40px auto;
+      transform: rotateX(10deg) rotateY(10deg);
+      transition: transform 0.5s;
+      border-radius: 20px;
+      overflow-y: auto;
+      overflow-x: auto;
+    }
+
+    .box:hover {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    .box h2 {
+      font-size: 75px;
+      margin-bottom: 5px;
+      font-family: 'OCR A Std', monospace;
+    }
+
+    .box p {
+      font-size: 19.2px;
+      line-height: 25.6px;
+      margin-bottom: 32px;
+    }
+
+    .box a {
+      background-color: #F1DEC9;
+      color: black;
+      padding: 16px 32px;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+      margin: 8px 0;
+      width: 80%;
+      max-width: none;
+      display: block;
+      text-align: center;
+    }
+
+    .box a:hover {
+      background-color: #758694;
+    }
+
+        .box a:hover {
+      background-color: #9DB2BF;
+    }
+
+    .collapsible {
+      background-color: #776B5D;
+      color: white;
+      cursor: pointer;
+      padding: 16px;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 18px;
+      border-radius: 5px;
+      width: 50%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .active, .collapsible:hover {
+      background-color: #grey;
+    }
+
+    .content {
+      padding: 0 18px;
+      display: none;
+      overflow: hidden;
+      background-color: #776B5D;
+      width: 80%;
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="logo">
+      <a href="index.html">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM8pNQ2ysSCb4O_d0bI855OZVMH8u2Q4A8zg&s" alt="logo" width="75" height="75">
+      </a>
+    </div>
+    <nav>
+      <li><a href="whatsapp.html">WhatsApp</a></li>
+      <li><a href="forms.html">Google Forms</a></li>
+      <li><a href="https://mymitwpu.integratededucation.pwc.in/oneportal/app/auth/login">PWC Portal</a></li>
+      <li><a href="course.html">Course Helps</a></li>
+      <li><a href="https://mitwpu.edu.in/academics/faq">FAQs</a></li>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div>
+      <img src="https://t.ly/SDXR7" alt="logo" width="330" height="125">
+    </div>
+    <p></p>
+    <div class="title">
+      WHATSAPP LINK
+    </div>
+    <div class="subtitle" id="current-date-time"></div>
+    <div class="box">
+      <h1 onclick="toggleContent(this)">CSE-CORE</h1>
+      <div class="content">
+        <a href="#">Panel A</a>
+        <a href="#">Panel B</a>
+        <a href="#">Panel C</a>
+        <a href="#">Panel D</a>
+        <a href="#">Panel E</a>
+        <a href="#">Panel F</a>
+        <a href="#">Panel G</a>
+      </div>
+    </div>
+    <div class="box">
+      <h1 onclick="toggleContent(this)">CSE-CSF</h1>
+      <div class="content">
+        <a href="#">Panel A</a>
+      </div>
+    </div>
+    <div class="box">
+      <h1 onclick="toggleContent(this)">CSE-AIDS</h1>
+      <div class="content">
+        <a href="#">Panel A</a>
+        <a href="#">Panel B</a>
+        <a href="#">Panel C</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const currentTime = document.getElementById('current-date-time');
+    function updateDateTime() {
+      const now = new Date();
+      const date = now.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      });
+      const time = now.toLocaleTimeString();
+      currentTime.textContent = `Today is ${now.toLocaleDateString('en-GB', { weekday: 'long' })}, ${date} ${time}`;
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+
+    function toggleContent(element) {
+      const content = element.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    }
+  </script>
+
+  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+</body>
+</html>
