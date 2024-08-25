@@ -1,7 +1,7 @@
-// Login.js
+//Login.js
 
 import React from "react";
-import styles from "./Styles/Login.css";
+import styles from "./Styles/Login.module.css";
 
 const Login = ({ type = "patient" }) => {
   const getHeader = () => {
@@ -16,7 +16,7 @@ const Login = ({ type = "patient" }) => {
   };
 
   return (
-    <div className={styles.loginPage}>
+    <div className={styles.wrapper}>
       <div className={styles.loginContainer}>
         <header className={styles.header}>{getHeader()}</header>
         <div className={styles.inputBox}>
